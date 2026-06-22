@@ -21,9 +21,9 @@ export default function Results() {
                 href={waLink(waMessages.starter)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp mt-8 inline-flex"
+                className="btn-primary mt-8 inline-flex"
               >
-                <WhatsAppIcon size={20} />
+                <WhatsAppIcon size={16} className="opacity-80" />
                 Get Your ₹5,999 Website
               </a>
             </div>

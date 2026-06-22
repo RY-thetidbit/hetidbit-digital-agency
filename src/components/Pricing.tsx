@@ -61,9 +61,9 @@ export default function Pricing() {
                 href={waLink(waMessages.plan(plan.name, plan.price))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-6 ${plan.highlighted ? "btn-whatsapp" : "btn-secondary"} w-full`}
+                className={`mt-6 ${plan.highlighted ? "btn-primary" : "btn-secondary"} w-full`}
               >
-                <WhatsAppIcon size={18} />
+                <WhatsAppIcon size={16} className="opacity-80" />
                 {plan.cta}
               </a>
 
