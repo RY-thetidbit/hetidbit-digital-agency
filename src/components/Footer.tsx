@@ -11,8 +11,8 @@ export default function Footer() {
               <Image
                 src={siteConfig.logo}
                 alt={siteConfig.name}
-                width={180}
-                height={180}
+                width={1797}
+                height={923}
                 className="h-20 w-auto"
               />
             </a>
@@ -57,6 +57,11 @@ export default function Footer() {
                   >
                     {siteConfig.phone}
                   </a>
+                </li>
+                <li>
+                  <p className="max-w-[14rem] text-sm text-muted">
+                    {siteConfig.address}
+                  </p>
                 </li>
               </ul>
             </div>

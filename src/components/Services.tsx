@@ -6,7 +6,7 @@ export default function Services() {
     <section id="services" className="py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <span className="section-label">Why Bharat.style</span>
+          <span className="section-label">Why TheTidbit Tech</span>
           <h2 className="mt-4 font-serif text-4xl tracking-tight md:text-5xl">
             Why thousands of businesses{" "}
             <span className="text-gradient-gold">choose us</span>

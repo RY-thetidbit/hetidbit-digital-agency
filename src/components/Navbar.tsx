@@ -9,14 +9,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass">
+    <header className="fixed top-0 left-0 right-0 z-50 header-cream">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2.5">
         <a href="#" className="group flex items-center gap-2">
           <Image
-            src={siteConfig.logo}
+            src={siteConfig.logoHeader}
             alt={siteConfig.name}
-            width={160}
-            height={160}
+            width={1341}
+            height={947}
             priority
             className="h-14 w-auto md:h-16"
           />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { ArrowRight, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 
 export default function ContactForm() {
@@ -58,6 +58,12 @@ export default function ContactForm() {
                 </span>
                 Chat instantly on WhatsApp
               </a>
+              <div className="flex items-start gap-3 text-muted">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background">
+                  <MapPin size={18} className="text-gold" />
+                </span>
+                <span className="pt-2">{siteConfig.address}</span>
+              </div>
             </div>
           </div>
 

@@ -1,11 +1,18 @@
-
 export const siteConfig = {
-  name: "Bharat.style",
+  name: "TheTidbit Tech",
   tagline: "Complete Websites, Starting at ₹5,999",
-  email: "hello@thetidbit.in",
-  phone: "+91 98765 43210",
-  whatsapp: "919876543210",
-  logo: "/logo.png",
+  url: "https://tech.thetidbit.in",
+  email: "support@thetidbit.in",
+  phone: "+91 92267 40297",
+  whatsapp: "919226740297",
+  address: "Shop No 11, Shivsahkti, Ambernath, Thane, Mumbai 421505",
+  logo: "/logo-thetidbit-tech.png",
+  logoHeader: "/logo-header.png",
+  socials: {
+    instagram: "https://www.instagram.com/thetidbit.in/",
+    facebook: "https://www.facebook.com/thetidbitin",
+    youtube: "https://www.youtube.com/@Thetidbit",
+  },
 };
 
 export const navLinks = [

@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1faf6"/>
+    </linearGradient>
+    <linearGradient id="price" x1="120" y1="430" x2="760" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#047857"/>
+      <stop offset="1" stop-color="#0d9488"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <text x="122" y="372" textLength="820" lengthAdjust="spacingAndGlyphs" font-family="Fraunces, 'Playfair Display', Georgia, serif" font-size="62" font-weight="600" fill="#0d2a22">Complete websites, done for you.</text>
+
+  <text x="122" y="472" textLength="660" lengthAdjust="spacingAndGlyphs" font-family="Fraunces, 'Playfair Display', Georgia, serif" font-size="92" font-weight="600" fill="url(#price)">Starting at &#8377;5,999</text>
+
+  <text x="124" y="546" textLength="720" lengthAdjust="spacingAndGlyphs" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="500" fill="#5d7068">Free domain &#183; Free hosting &#183; Free SSL &#183; Live in 3&#8211;5 days</text>
+</svg>
