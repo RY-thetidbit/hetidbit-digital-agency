@@ -1,5 +1,6 @@
 import { Check, Star } from "lucide-react";
-import { pricingPlans, siteConfig } from "@/lib/constants";
+import { pricingPlans, waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function Pricing() {
   return (
@@ -57,13 +58,12 @@ export default function Pricing() {
               <p className="mt-1 text-xs text-muted">{plan.period}</p>
 
               <a
-                href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                  `Hi! I'm interested in the ${plan.name} plan (${plan.price}). Please share the details.`,
-                )}`}
+                href={waLink(waMessages.plan(plan.name, plan.price))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-6 ${plan.highlighted ? "btn-primary" : "btn-secondary"} w-full`}
+                className={`mt-6 ${plan.highlighted ? "btn-whatsapp" : "btn-secondary"} w-full`}
               >
+                <WhatsAppIcon size={18} />
                 {plan.cta}
               </a>
 
@@ -100,7 +100,7 @@ export default function Pricing() {
         <p className="mt-10 text-center text-sm text-muted">
           Not sure which plan fits? {" "}
           <a
-            href={`https://wa.me/${siteConfig.whatsapp}`}
+            href={waLink(waMessages.pricingHelp)}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-gold hover:underline"

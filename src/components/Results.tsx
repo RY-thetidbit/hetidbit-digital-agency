@@ -1,4 +1,5 @@
-import { stats } from "@/lib/constants";
+import { stats, waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function Results() {
   return (
@@ -16,7 +17,13 @@ export default function Results() {
                 From bakeries to boutiques to clinics — thousands of small
                 businesses have gone online with us, quickly and affordably.
               </p>
-              <a href="#pricing" className="btn-primary mt-8 inline-flex">
+              <a
+                href={waLink(waMessages.starter)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp mt-8 inline-flex"
+              >
+                <WhatsAppIcon size={20} />
                 Get Your ₹5,999 Website
               </a>
             </div>

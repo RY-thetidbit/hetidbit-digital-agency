@@ -16,6 +16,8 @@
   --accent-glow: rgba(5, 150, 105, 0.14);
   --cyan: #0d9488; /* teal — second stop in brand gradients */
   --emerald: #10b981; /* "free" savings / success tags */
+  --whatsapp: #25d366; /* official WhatsApp green — primary CTA */
+  --whatsapp-dark: #1ebe5d;
 }
 
 @theme inline {
@@ -30,6 +32,7 @@
   --color-gold-dark: var(--gold-dark);
   --color-cyan: var(--cyan);
   --color-emerald-brand: var(--emerald);
+  --color-whatsapp: var(--whatsapp);
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-instrument-serif);
 }
@@ -126,11 +129,13 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-/* Warm cream header tuned to blend with the ornate logo's background. */
+/* Clean, professional white header; the logo now has a transparent background. */
 .header-cream {
-  background: linear-gradient(180deg, #f9f1e0 0%, #f4e8d0 100%);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(120, 90, 40, 0.14);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 20px -14px rgba(13, 42, 34, 0.2);
 }
 
 .btn-primary {
@@ -169,6 +174,74 @@ body {
 .btn-secondary:hover {
   border-color: rgba(5, 150, 105, 0.45);
   background: rgba(5, 150, 105, 0.06);
+}
+
+/* WhatsApp-first primary action — recognisable green + glyph. */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(180deg, var(--whatsapp) 0%, var(--whatsapp-dark) 100%);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 24px -8px rgba(37, 211, 102, 0.55);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px -8px rgba(37, 211, 102, 0.7);
+}
+
+/* Floating WhatsApp button, bottom-right. */
+.wa-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 9999px;
+  background: var(--whatsapp);
+  color: #ffffff;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-fab:hover {
+  transform: scale(1.06);
+  box-shadow: 0 16px 38px -8px rgba(37, 211, 102, 0.75);
+}
+
+/* Soft pulsing ring to draw the eye without being noisy. */
+.wa-fab-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--whatsapp);
+  opacity: 0.45;
+  animation: wa-pulse 2.4s ease-out infinite;
+}
+
+@keyframes wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  70%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab-ring {
+    animation: none;
+    display: none;
+  }
 }
 
 .section-label {

@@ -1,15 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
-import { siteConfig } from "@/lib/constants";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { siteConfig, waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [sent, setSent] = useState(false);
 
+  // WhatsApp-first: the form has no backend — instead it composes a tidy
+  // message from the fields and opens a WhatsApp chat pre-filled with it, so
+  // the enquiry lands straight in your inbox ready to reply.
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    const data = new FormData(e.currentTarget);
+    const get = (k: string) => (data.get(k) || "").toString().trim();
+
+    const lines = [
+      "Hi TheTidbit Tech! I'd like to get a website. Here are my details:",
+      "",
+      `• Name: ${get("name") || "-"}`,
+      `• Business: ${get("business") || "-"}`,
+      `• Phone: ${get("phone") || "-"}`,
+      `• Plan: ${get("plan") || "-"}`,
+    ];
+    const message = get("message");
+    if (message) lines.push(`• About: ${message}`);
+
+    window.open(waLink(lines.join("\n")), "_blank", "noopener,noreferrer");
+    setSent(true);
   }
 
   return (
@@ -23,12 +42,33 @@ export default function ContactForm() {
               <span className="text-gradient-gold">online</span>
             </h2>
             <p className="mt-4 text-lg text-muted">
-              Tell us about your business and the plan you want. We&apos;ll reply
-              within 24 hours — or message us on WhatsApp for an instant
-              response.
+              The fastest way to start is a quick WhatsApp message — we usually
+              reply within minutes. Prefer a form? Fill it in and it&apos;ll open
+              WhatsApp with your details ready to send.
             </p>
 
-            <div className="mt-10 space-y-4">
+            {/* Primary: WhatsApp */}
+            <a
+              href={waLink(waMessages.general)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 flex items-center gap-4 rounded-2xl border border-whatsapp/30 bg-whatsapp/5 p-5 transition-colors hover:bg-whatsapp/10"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-whatsapp text-white">
+                <WhatsAppIcon size={24} />
+              </span>
+              <span>
+                <span className="block font-semibold text-foreground">
+                  Chat on WhatsApp
+                </span>
+                <span className="block text-sm text-muted">
+                  Instant replies · 9 AM–9 PM, all 7 days
+                </span>
+              </span>
+            </a>
+
+            {/* Secondary contact details */}
+            <div className="mt-8 space-y-4">
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-3 text-muted transition-colors hover:text-foreground"
@@ -47,17 +87,6 @@ export default function ContactForm() {
                 </span>
                 {siteConfig.phone}
               </a>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-muted transition-colors hover:text-foreground"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background">
-                  <MessageCircle size={18} className="text-emerald-brand" />
-                </span>
-                Chat instantly on WhatsApp
-              </a>
               <div className="flex items-start gap-3 text-muted">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background">
                   <MapPin size={18} className="text-gold" />
@@ -68,15 +97,24 @@ export default function ContactForm() {
           </div>
 
           <div className="rounded-2xl border border-border bg-background p-8">
-            {submitted ? (
+            {sent ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold/10 text-gold">
-                  <Send size={28} />
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp/10 text-whatsapp">
+                  <WhatsAppIcon size={30} />
                 </div>
-                <h3 className="mt-6 text-xl font-semibold">Message sent!</h3>
+                <h3 className="mt-6 text-xl font-semibold">WhatsApp opened!</h3>
                 <p className="mt-2 text-muted">
-                  We&apos;ll be in touch within 24 hours to schedule your free
-                  strategy call.
+                  Just hit send in WhatsApp and we&apos;ll get right back to you.
+                  Didn&apos;t open?{" "}
+                  <a
+                    href={waLink(waMessages.general)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-whatsapp hover:underline"
+                  >
+                    Tap here to chat
+                  </a>
+                  .
                 </p>
               </div>
             ) : (
@@ -90,20 +128,7 @@ export default function ContactForm() {
                     name="name"
                     type="text"
                     required
-                    placeholder="Jane Smith"
-                    className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-gold/50"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-medium">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="jane@company.com"
+                    placeholder="Your name"
                     className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-gold/50"
                   />
                 </div>
@@ -152,7 +177,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <label htmlFor="message" className="mb-2 block text-sm font-medium">
-                    Tell us about your business
+                    Tell us about your business{" "}
+                    <span className="text-muted">(optional)</span>
                   </label>
                   <textarea
                     id="message"
@@ -162,12 +188,12 @@ export default function ContactForm() {
                     className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-gold/50"
                   />
                 </div>
-                <button type="submit" className="btn-primary w-full">
-                  Send Message
-                  <ArrowRight size={18} />
+                <button type="submit" className="btn-whatsapp w-full">
+                  <WhatsAppIcon size={18} />
+                  Send on WhatsApp
                 </button>
                 <p className="text-center text-xs text-muted">
-                  Free consultation · No spam · Response within 24 hours
+                  Opens WhatsApp with your details · No spam · Reply within minutes
                 </p>
               </form>
             )}

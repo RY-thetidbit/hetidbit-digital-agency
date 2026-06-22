@@ -1,5 +1,6 @@
 import { ArrowRight, BadgeCheck, Check, Sparkles } from "lucide-react";
-import { heroStats, packageIncludes } from "@/lib/constants";
+import { heroStats, packageIncludes, waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function Hero() {
   return (
@@ -29,14 +30,24 @@ export default function Hero() {
             </p>
 
             <div className="animate-fade-up-delay-3 mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#pricing" className="btn-primary">
-                Get Your ₹5,999 Website
+              <a
+                href={waLink(waMessages.starter)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp"
+              >
+                <WhatsAppIcon size={20} />
+                Chat on WhatsApp
+              </a>
+              <a href="#pricing" className="btn-secondary">
+                See Plans &amp; Pricing
                 <ArrowRight size={18} />
               </a>
-              <a href="#included" className="btn-secondary">
-                See What&apos;s Included
-              </a>
             </div>
+
+            <p className="animate-fade-up-delay-3 mt-4 text-sm text-muted">
+              Reply usually within minutes · 9 AM–9 PM, all 7 days
+            </p>
 
             <div className="animate-fade-up-delay-3 mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
               <span className="flex items-center gap-1.5">
@@ -97,9 +108,14 @@ export default function Hero() {
                   <p className="pl-7 text-sm text-gold">+ 5 more included →</p>
                 </div>
 
-                <a href="#pricing" className="btn-primary mt-6 w-full">
-                  Claim This Offer
-                  <ArrowRight size={18} />
+                <a
+                  href={waLink(waMessages.starter)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp mt-6 w-full"
+                >
+                  <WhatsAppIcon size={18} />
+                  Claim This Offer on WhatsApp
                 </a>
                 <p className="mt-3 text-center text-xs text-muted">
                   Limited launch price · Renews from ₹1,499/year

@@ -15,6 +15,27 @@ export const siteConfig = {
   },
 };
 
+// --- WhatsApp-first conversion helpers -------------------------------------
+// Every "talk to us" action on the site funnels into one WhatsApp chat with a
+// context-aware pre-filled message, so leads land in your inbox ready to reply.
+const WHATSAPP_BASE = `https://wa.me/${siteConfig.whatsapp}`;
+
+export function waLink(message?: string) {
+  if (!message) return WHATSAPP_BASE;
+  return `${WHATSAPP_BASE}?text=${encodeURIComponent(message)}`;
+}
+
+export const waMessages = {
+  general:
+    "Hi TheTidbit Tech! I'd like to get a website for my business. Can you share the details?",
+  starter:
+    "Hi! I want the ₹5,999 Starter website (free domain, hosting & SSL included). Please help me get started.",
+  pricingHelp:
+    "Hi! I'm not sure which plan fits my business. Can you help me choose?",
+  plan: (name: string, price: string) =>
+    `Hi! I'm interested in the ${name} plan (${price}). Please share the details.`,
+};
+
 export const navLinks = [
   { label: "Pricing", href: "#pricing" },
   { label: "What's Included", href: "#included" },

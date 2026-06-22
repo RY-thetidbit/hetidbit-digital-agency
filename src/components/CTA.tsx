@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
+import { waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function CTA() {
   return (
@@ -36,10 +38,19 @@ export default function CTA() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="#pricing"
+                href={waLink(waMessages.starter)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-emerald-700 shadow-lg transition-transform hover:-translate-y-0.5"
               >
-                Get Your ₹5,999 Website
+                <WhatsAppIcon size={20} />
+                Chat on WhatsApp
+              </a>
+              <a
+                href="#pricing"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                See Plans &amp; Pricing
                 <ArrowRight size={18} />
               </a>
             </div>

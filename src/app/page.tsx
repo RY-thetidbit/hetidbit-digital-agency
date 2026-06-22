@@ -13,6 +13,7 @@ import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       </main>
       <Footer />
       <MobileCTA />
+      <WhatsAppFAB />
     </>
   );
 }

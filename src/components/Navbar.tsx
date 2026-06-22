@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { navLinks, siteConfig } from "@/lib/constants";
+import { navLinks, siteConfig, waLink, waMessages } from "@/lib/constants";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -37,8 +38,14 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <a href="#pricing" className="btn-primary text-sm">
-            Get ₹5,999 Website
+          <a
+            href={waLink(waMessages.starter)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-whatsapp text-sm"
+          >
+            <WhatsAppIcon size={18} />
+            Chat on WhatsApp
           </a>
         </div>
 
@@ -68,11 +75,14 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="#pricing"
-                className="btn-primary w-full text-sm"
+                href={waLink(waMessages.starter)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp w-full text-sm"
                 onClick={() => setOpen(false)}
               >
-                Get ₹5,999 Website
+                <WhatsAppIcon size={18} />
+                Chat on WhatsApp
               </a>
             </li>
           </ul>
