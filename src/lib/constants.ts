@@ -6,8 +6,8 @@ export const siteConfig = {
   phone: "+91 92267 40297",
   whatsapp: "919226740297",
   address: "Shop No 11, Shivsahkti, Ambernath, Thane, Mumbai 421505",
-  logo: "/logo-thetidbit-tech.png",
-  logoHeader: "/logo-header.png",
+  logo: "/logo-footer-opt.png",
+  logoHeader: "/logo-header-opt.png",
   socials: {
     instagram: "https://www.instagram.com/thetidbit.in/",
     facebook: "https://www.facebook.com/thetidbitin",
@@ -38,10 +38,13 @@ export const waMessages = {
 
 export const navLinks = [
   { label: "Pricing", href: "#pricing" },
+  { label: "Categories", href: "/website-categories" },
   { label: "What's Included", href: "#included" },
+  { label: "Our Work", href: "#work" },
   { label: "Process", href: "#process" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const heroStats = [
@@ -51,11 +54,12 @@ export const heroStats = [
   { label: "All-inclusive price", value: "₹5,999" },
 ];
 
-export const stats = [
-  { value: "2,500+", label: "Websites launched" },
-  { value: "3–5 days", label: "Average delivery time" },
-  { value: "4.9★", label: "Average customer rating" },
-  { value: "99%", label: "Sites live without hassle" },
+// Outcome highlights — distinct from hero stats to avoid repetition.
+export const outcomeHighlights = [
+  { value: "80%+", label: "Visitors browse on mobile" },
+  { value: "24×7", label: "Your business open online" },
+  { value: "0", label: "Coding skills required" },
+  { value: "1 yr", label: "Free support included" },
 ];
 
 // The lucrative "everything included" value stack for the ₹5,999 package.
@@ -69,7 +73,6 @@ export const packageIncludes = [
   { label: "100% mobile responsive design", note: "Looks perfect on every phone", free: false },
   { label: "WhatsApp chat button", note: "Turn visitors into chats instantly", free: false },
   { label: "Enquiry form + Google Maps", note: "Capture leads, show your location", free: false },
-  { label: "Business email ID", note: "you@yourbusiness.com", free: true },
   { label: "Social media integration", note: "Instagram, Facebook, YouTube links", free: false },
   { label: "1 year free support & updates", note: "We've got your back after launch", free: true },
 ];
@@ -90,7 +93,6 @@ export const pricingPlans = [
       "Google Analytics setup",
       "Mobile responsive design",
       "WhatsApp chat + enquiry form",
-      "Business email ID",
       "Delivered in 3–5 days",
     ],
     cta: "Get Started for ₹5,999",
@@ -219,24 +221,131 @@ export const testimonials = [
   },
 ];
 
+// Website types we build — each with a popular real-world example visitors can explore.
+export const websiteCategories = [
+  {
+    slug: "bakery-food",
+    name: "Bakery & Food",
+    description:
+      "Show your menu, photos, and WhatsApp order button — perfect for bakeries, sweet shops, and home chefs.",
+    exampleName: "Theobroma",
+    exampleUrl: "https://www.theobroma.in",
+    image: "/work/categories/cat-bakery.jpg",
+    plan: "Starter · ₹5,999",
+  },
+  {
+    slug: "restaurant-cafe",
+    name: "Restaurant & Cafe",
+    description:
+      "Display your menu, ambience, location on Google Maps, and let diners book a table or order online.",
+    exampleName: "Haldiram's",
+    exampleUrl: "https://www.haldirams.com",
+    image: "/work/categories/cat-restaurant.jpg",
+    plan: "Starter · ₹5,999",
+  },
+  {
+    slug: "clinic-healthcare",
+    name: "Clinic & Healthcare",
+    description:
+      "Build trust with services, doctor profiles, appointment enquiry forms, and your clinic location.",
+    exampleName: "Apollo Hospitals",
+    exampleUrl: "https://www.apollohospitals.com",
+    image: "/work/categories/cat-clinic.jpg",
+    plan: "Business · ₹11,999",
+  },
+  {
+    slug: "fashion-boutique",
+    name: "Fashion & Boutique",
+    description:
+      "Showcase your collection with a beautiful gallery, size guides, and WhatsApp for custom orders.",
+    exampleName: "FabIndia",
+    exampleUrl: "https://www.fabindia.com",
+    image: "/work/categories/cat-fashion.jpg",
+    plan: "Starter · ₹5,999",
+  },
+  {
+    slug: "online-store",
+    name: "Online Store",
+    description:
+      "Sell products 24×7 with cart, checkout, and order management — your shop never closes.",
+    exampleName: "Myntra",
+    exampleUrl: "https://www.myntra.com",
+    image: "/work/categories/cat-store.jpg",
+    plan: "Premium Store · ₹24,999",
+  },
+  {
+    slug: "coaching-education",
+    name: "Coaching & Education",
+    description:
+      "List courses, share results, capture student enquiries, and look professional to parents.",
+    exampleName: "PhysicsWallah",
+    exampleUrl: "https://www.pw.live",
+    image: "/work/categories/cat-education.jpg",
+    plan: "Business · ₹11,999",
+  },
+  {
+    slug: "salon-beauty",
+    name: "Salon & Beauty",
+    description:
+      "Show services, pricing, before/after gallery, and let clients book via WhatsApp instantly.",
+    exampleName: "Naturals Salon",
+    exampleUrl: "https://www.naturalsalon.in",
+    image: "/work/categories/cat-salon.jpg",
+    plan: "Starter · ₹5,999",
+  },
+  {
+    slug: "gym-fitness",
+    name: "Gym & Fitness",
+    description:
+      "Promote memberships, class timings, trainer profiles, and convert visitors into sign-ups.",
+    exampleName: "Cult.fit",
+    exampleUrl: "https://www.cult.fit",
+    image: "/work/categories/cat-gym.jpg",
+    plan: "Business · ₹11,999",
+  },
+  {
+    slug: "real-estate",
+    name: "Real Estate & Property",
+    description:
+      "List properties with photos, filters, enquiry forms, and your contact details front and centre.",
+    exampleName: "Magicbricks",
+    exampleUrl: "https://www.magicbricks.com",
+    image: "/work/categories/cat-realestate.jpg",
+    plan: "Business · ₹11,999",
+  },
+] as const;
+
+export function categoryWaMessage(name: string) {
+  return `Hi TheTidbit Tech! I run a ${name.toLowerCase()} business and want a website like the examples on your site. Please share details.`;
+}
+
 export const portfolioItems = [
   {
     title: "Sweet Crumbs Bakery",
     category: "Food & Bakery",
     result: "Starter · ₹5,999",
     image: "/work/bakery.jpg",
+    href: waLink(
+      "Hi! I saw the Sweet Crumbs Bakery website on your portfolio. I'd like a similar website for my business.",
+    ),
   },
   {
     title: "Mehta Dental Care",
     category: "Clinic & Healthcare",
     result: "Business plan",
     image: "/work/clinic.jpg",
+    href: waLink(
+      "Hi! I saw the Mehta Dental Care website on your portfolio. I'd like a professional site like that for my clinic.",
+    ),
   },
   {
     title: "Aalia Boutique",
     category: "Online Store",
     result: "Premium store",
     image: "/work/boutique.jpg",
+    href: waLink(
+      "Hi! I saw the Aalia Boutique online store on your portfolio. I'm interested in selling online too.",
+    ),
   },
 ];
 

@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { services } from "@/lib/constants";
+import Reveal from "@/components/Reveal";
 
 export default function Services() {
   return (
@@ -19,9 +20,10 @@ export default function Services() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (
-            <article
+            <Reveal
               key={service.title}
-              className="group rounded-2xl border border-border bg-surface p-8 transition-all hover:border-gold/30 hover:bg-surface-elevated"
+              delay={(index % 2) * 120}
+              className="group card-lift rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-gold/30 hover:bg-surface-elevated"
             >
               <span className="text-sm font-medium text-gold/60">
                 0{index + 1}
@@ -41,7 +43,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

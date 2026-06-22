@@ -29,6 +29,7 @@ export default function FAQ() {
           <div className="space-y-3">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
+              const panelId = `faq-panel-${index}`;
               return (
                 <div
                   key={faq.question}
@@ -36,9 +37,11 @@ export default function FAQ() {
                 >
                   <button
                     type="button"
+                    id={`faq-trigger-${index}`}
                     className="flex w-full items-center justify-between gap-4 p-5 text-left font-medium transition-colors hover:text-gold"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     aria-expanded={isOpen}
+                    aria-controls={panelId}
                   >
                     {faq.question}
                     <ChevronDown
@@ -48,13 +51,17 @@ export default function FAQ() {
                       }`}
                     />
                   </button>
-                  {isOpen && (
-                    <div className="border-t border-border px-5 pb-5 pt-0">
-                      <p className="pt-4 text-sm leading-relaxed text-muted">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  )}
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={`faq-trigger-${index}`}
+                    hidden={!isOpen}
+                    className="border-t border-border px-5 pb-5 pt-0"
+                  >
+                    <p className="pt-4 text-sm leading-relaxed text-muted">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
               );
             })}

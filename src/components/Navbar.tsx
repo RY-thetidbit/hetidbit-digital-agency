@@ -1,34 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { navLinks, siteConfig, waLink, waMessages } from "@/lib/constants";
-import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { navLinks, siteConfig } from "@/lib/constants";
+
+function navHref(href: string, pathname: string) {
+  if (href.startsWith("#") && pathname !== "/") return `/${href}`;
+  return href;
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 header-cream">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2.5">
-        <a href="#" className="group flex items-center gap-2">
+        <Link href="/" className="group flex items-center gap-2">
           <Image
             src={siteConfig.logoHeader}
             alt={siteConfig.name}
-            width={1341}
-            height={947}
+            width={400}
+            height={282}
             priority
             className="h-14 w-auto md:h-16"
           />
           <span className="sr-only">{siteConfig.name}</span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
+                href={navHref(link.href, pathname)}
                 className="text-sm text-muted transition-colors hover:text-foreground"
               >
                 {link.label}
@@ -38,14 +45,8 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <a
-            href={waLink(waMessages.starter)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp text-sm"
-          >
-            <WhatsAppIcon size={18} />
-            Chat on WhatsApp
+          <a href={navHref("#pricing", pathname)} className="btn-primary text-sm">
+            Get Started
           </a>
         </div>
 
@@ -65,7 +66,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={navHref(link.href, pathname)}
                   className="block text-muted transition-colors hover:text-foreground"
                   onClick={() => setOpen(false)}
                 >
@@ -75,14 +76,11 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href={waLink(waMessages.starter)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp w-full text-sm"
+                href={navHref("#pricing", pathname)}
+                className="btn-primary w-full text-sm"
                 onClick={() => setOpen(false)}
               >
-                <WhatsAppIcon size={18} />
-                Chat on WhatsApp
+                Get Started
               </a>
             </li>
           </ul>

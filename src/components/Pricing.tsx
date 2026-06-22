@@ -1,6 +1,7 @@
 import { Check, Star } from "lucide-react";
 import { pricingPlans, waLink, waMessages } from "@/lib/constants";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import Reveal from "@/components/Reveal";
 
 export default function Pricing() {
   return (
@@ -20,9 +21,11 @@ export default function Pricing() {
         </div>
 
         <div className="mt-16 grid items-stretch gap-6 lg:grid-cols-3">
-          {pricingPlans.map((plan) => (
-            <div
+          {pricingPlans.map((plan, index) => (
+            <Reveal
               key={plan.name}
+              variant="up"
+              delay={index * 130}
               className={`relative flex flex-col rounded-3xl border p-8 ${
                 plan.highlighted
                   ? "border-gold/40 bg-surface-elevated shadow-[0_30px_60px_-25px_rgba(5,150,105,0.55)] ring-1 ring-gold/10 lg:-mt-4 lg:mb-4"
@@ -93,7 +96,7 @@ export default function Pricing() {
               <p className="mt-6 text-[11px] leading-relaxed text-muted">
                 {plan.note}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
 

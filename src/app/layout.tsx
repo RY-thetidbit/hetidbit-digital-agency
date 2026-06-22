@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import { siteConfig } from "@/lib/constants";
+import Analytics from "@/components/Analytics";
+import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
 // Body font — clean, friendly modern sans.
@@ -60,6 +62,8 @@ export default function RootLayout({
       className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <JsonLd />
+        <Analytics />
         {children}
       </body>
     </html>

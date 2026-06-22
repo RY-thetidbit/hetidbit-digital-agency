@@ -1,5 +1,6 @@
 import { Quote } from "lucide-react";
 import { testimonials } from "@/lib/constants";
+import Reveal from "@/components/Reveal";
 
 export default function Testimonials() {
   return (
@@ -14,10 +15,11 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <blockquote
+          {testimonials.map((testimonial, index) => (
+            <Reveal
               key={testimonial.author}
-              className="flex flex-col rounded-2xl border border-border bg-background p-8"
+              delay={index * 120}
+              className="card-lift flex flex-col rounded-2xl border border-border bg-background p-8"
             >
               <Quote size={28} className="text-gold/40" />
               <p className="mt-4 flex-1 leading-relaxed text-muted">
@@ -30,7 +32,7 @@ export default function Testimonials() {
                 <p className="mt-3 font-semibold">{testimonial.author}</p>
                 <p className="text-sm text-muted">{testimonial.role}</p>
               </div>
-            </blockquote>
+            </Reveal>
           ))}
         </div>
       </div>

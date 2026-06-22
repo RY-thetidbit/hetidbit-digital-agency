@@ -1,4 +1,5 @@
 import { processSteps } from "@/lib/constants";
+import Reveal from "@/components/Reveal";
 
 export default function Process() {
   return (
@@ -18,11 +19,11 @@ export default function Process() {
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
-            <div key={step.step} className="relative">
+            <Reveal key={step.step} delay={index * 130} className="relative">
               {index < processSteps.length - 1 && (
                 <div className="absolute top-8 left-full hidden h-px w-full bg-gradient-to-r from-gold/40 to-transparent lg:block" />
               )}
-              <div className="rounded-2xl border border-border bg-background p-6">
+              <div className="card-lift h-full rounded-2xl border border-border bg-background p-6">
                 <span className="font-serif text-4xl text-gold/30">
                   {step.step}
                 </span>
@@ -31,7 +32,7 @@ export default function Process() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

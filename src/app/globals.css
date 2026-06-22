@@ -59,11 +59,71 @@ body {
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Chat demo: bubble pop-in + WhatsApp-style typing dots. */
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes typing-blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.msg-in {
+  animation: msg-in 0.35s ease-out;
+}
+
+.typing-dot {
+  animation: typing-blink 1.2s infinite;
+}
+
+/* Blinking search caret — sells "searching right now". */
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.search-caret {
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* One-time light sweep across the hero card on load. */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-14deg);
+  }
+  100% {
+    transform: translateX(160%) skewX(-14deg);
   }
 }
 
@@ -83,6 +143,85 @@ body {
   }
   50% {
     opacity: 0.8;
+  }
+}
+
+/* Slow-drifting aurora blobs for premium, living backgrounds. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.12);
+  }
+  66% {
+    transform: translate(-30px, 24px) scale(0.94);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Seamless logo/work marquee — track holds two copies, slides to -50%. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift 26s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.marquee {
+  animation: marquee 38s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Premium card hover lift — used on content cards across the site. */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -28px rgba(13, 42, 34, 0.3);
+}
+
+/* Honour reduced-motion: stop ambient/looping motion entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-drift-slow,
+  .animate-float,
+  .marquee,
+  .text-shimmer-gold,
+  .shine-sweep::after,
+  .typing-dot,
+  .msg-in,
+  .search-caret {
+    animation: none;
   }
 }
 
@@ -110,6 +249,51 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Animated liquid-gold text — premium moving sheen for the hero price. */
+.text-shimmer-gold {
+  background: linear-gradient(
+    110deg,
+    var(--gold-dark) 0%,
+    var(--gold) 25%,
+    var(--gold-light) 45%,
+    var(--cyan) 60%,
+    var(--gold) 80%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* Light-sweep overlay; sits above card content and glints twice on load. */
+.shine-sweep {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.shine-sweep::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-14deg);
+  animation: shine-sweep 1.4s ease-in-out 0.7s 2;
 }
 
 .bg-grid {

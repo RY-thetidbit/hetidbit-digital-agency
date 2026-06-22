@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
 import { waLink, waMessages } from "@/lib/constants";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import Reveal from "@/components/Reveal";
 
 export default function CTA() {
   return (
@@ -19,7 +20,7 @@ export default function CTA() {
           <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
 
-          <div className="relative">
+          <Reveal variant="scale" className="relative">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur">
               <Calendar size={14} />
               Limited launch price — ₹5,999
@@ -59,7 +60,7 @@ export default function CTA() {
               No hidden charges · Pay only when you&apos;re happy · 1 year free
               support
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

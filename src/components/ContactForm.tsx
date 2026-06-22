@@ -16,6 +16,13 @@ export default function ContactForm() {
     const data = new FormData(e.currentTarget);
     const get = (k: string) => (data.get(k) || "").toString().trim();
 
+    const phone = get("phone").replace(/\s/g, "");
+    const phoneOk = /^(?:\+91|91)?[6-9]\d{9}$/.test(phone);
+    if (!phoneOk) {
+      alert("Please enter a valid Indian mobile number (10 digits).");
+      return;
+    }
+
     const lines = [
       "Hi TheTidbit Tech! I'd like to get a website. Here are my details:",
       "",

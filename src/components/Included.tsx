@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Check, Gift } from "lucide-react";
 import { packageIncludes } from "@/lib/constants";
+import WhatsAppChatDemo from "@/components/WhatsAppChatDemo";
 
 export default function Included() {
   return (
@@ -22,20 +22,9 @@ export default function Included() {
               professional website without the surprise bills.
             </p>
 
-            <div className="relative mt-8 overflow-hidden rounded-2xl border border-border">
-              <Image
-                src="/work/laptop.jpg"
-                alt="Live website analytics dashboard"
-                width={900}
-                height={600}
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="h-56 w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <span className="absolute bottom-3 left-3 rounded-full bg-gold/90 px-3 py-1 text-xs font-semibold text-white">
-                Google Analytics included
-              </span>
-            </div>
+            {/* Live demo of the included WhatsApp chat — proves the feature
+                right where it's being sold. */}
+            <WhatsAppChatDemo className="mt-8 max-w-md" />
 
             <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-emerald-brand/30 bg-emerald-brand/5 px-5 py-4">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-brand/15 text-emerald-brand">
